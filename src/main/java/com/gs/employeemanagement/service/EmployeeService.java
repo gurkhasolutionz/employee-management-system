@@ -30,6 +30,7 @@ public class EmployeeService {
 		// TODO Auto-generated method stub
 		existingEmployee.get().setFirstName(employee.getFirstName());
 		existingEmployee.get().setLastName(employee.getLastName());
+		existingEmployee.get().setEmail(employee.getEmail());
 		return empRepo.save(existingEmployee.get());
 		
 	}
