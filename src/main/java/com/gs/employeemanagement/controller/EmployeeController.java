@@ -22,6 +22,12 @@ import com.gs.employeemanagement.exception.EmployeeNotFoundException;
 import com.gs.employeemanagement.model.Employee;
 import com.gs.employeemanagement.service.EmployeeService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+
+
 //controller @responsebody
 
 //Postman for testing endpoint or api
@@ -46,6 +52,19 @@ public class EmployeeController {
 	// ResponseEnity
 	
 	// status: 
+	
+	// communication between other service
+	
+	
+	// Swagger (open api specification);
+	
+	//Syncronous communication and Asyncronous communication
+	
+	// RestTemplate and Webclient
+	
+	// message que // kafka, rabbitmq, mq
+	
+	
 	@Autowired
 	private EmployeeService empService;
 	
@@ -63,6 +82,14 @@ public class EmployeeController {
 				
 				
 	}
+	@Operation(summary = "Get a Employee by its id")
+	@ApiResponses(value = { 
+			  @ApiResponse(responseCode = "200", description = "Found the book", 
+			    content = { @Content(mediaType = "application/json") }),
+			  @ApiResponse(responseCode = "400", description = "Invalid id supplied", 
+			    content = @Content), 
+			  @ApiResponse(responseCode = "404", description = "Book not found", 
+			    content = @Content) })
 	@GetMapping("/employee/{empId}")
 	public ResponseEntity<?> getEmployee(@PathVariable Long empId) {
 		Optional<Employee> emp=empService.getEmployeeById(empId);
